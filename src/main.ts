@@ -6,7 +6,7 @@ async function bootstrap() {
   const corsOption = {
     origin: ['http://localhost:4200'],
   };
-  app.enableCors();
+  app.enableCors(corsOption);
   await app.listen(3000);
 }
 bootstrap();
