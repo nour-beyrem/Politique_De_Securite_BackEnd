@@ -7,6 +7,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { FirstMiddleware } from './middlewares/first.middleware';
 import { SecondMiddleware } from './middlewares/second.middleware';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { SecondMiddleware } from './middlewares/second.middleware';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],

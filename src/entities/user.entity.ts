@@ -1,4 +1,7 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import { DemandeAutorisationEntity } from './demande-autorisation.entity';
+import { PerimetreEntity } from './perimetre.entity';
+import { SortieActifEntity } from './sortie-actif.entity';
 import { TimestampEntity } from './timestamp.entity';
 
 @Entity('user')
@@ -50,4 +53,37 @@ export class UserEntity extends TimestampEntity {
 
   @Column({ type: 'varchar' })
   salt: string;
+
+  @OneToMany(
+    (type) => DemandeAutorisationEntity,
+    (autorisation) => autorisation.user,
+    {
+      cascade: true,
+    },
+  )
+  autorisationUser: DemandeAutorisationEntity[];
+
+  @OneToMany(
+    (type) => DemandeAutorisationEntity,
+    (autorisation) => autorisation.user,
+    {
+      cascade: true,
+    },
+  )
+  autorisationResponsable: DemandeAutorisationEntity[];
+
+  @OneToMany((type) => PerimetreEntity, (perimetre) => perimetre.proprietaire, {
+    cascade: true,
+  })
+  perimetre: PerimetreEntity[];
+
+  @OneToMany((type) => SortieActifEntity, (sortie) => sortie.agentS, {
+    cascade: true,
+  })
+  agentAutorise: SortieActifEntity[];
+
+  @OneToMany((type) => SortieActifEntity, (sortie) => sortie.responsable, {
+    cascade: true,
+  })
+  responsableAutorisation: SortieActifEntity[];
 }
