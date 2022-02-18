@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { UserRoleEnum } from 'src/user/enum/user-role.enum';
 import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 import { DemandeAutorisationEntity } from './demande-autorisation.entity';
 import { PerimetreEntity } from './perimetre.entity';
@@ -10,7 +13,7 @@ export class UserEntity extends TimestampEntity {
     length: 50,
     unique: true,
   })
-  matricule: string;
+  username: string;
 
   @Column({ type: 'varchar', length: 50 })
   prenom: string;
@@ -34,8 +37,9 @@ export class UserEntity extends TimestampEntity {
   @Column()
   sortie: boolean;
 
-  @Column({ type: 'varchar' })
-  role: string;
+  @Column({type: 'enum',
+        enum: UserRoleEnum})
+       role: string;
   @Column()
   charte: boolean;
   @Column()
@@ -45,7 +49,7 @@ export class UserEntity extends TimestampEntity {
     length: 50,
     unique: true,
   })
-  username: string;
+  matricule: string;
   @Column({ type: 'varchar', unique: true })
   email: string;
   @Column({ type: 'varchar' })
