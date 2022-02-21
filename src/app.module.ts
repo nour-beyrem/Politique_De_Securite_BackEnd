@@ -8,6 +8,9 @@ import { AppService } from './app.service';
 import { FirstMiddleware } from './middlewares/first.middleware';
 import { SecondMiddleware } from './middlewares/second.middleware';
 import { UserModule } from './user/user.module';
+import { CelluleModule } from './cellule/cellule.module';
+import { ReunionModule } from './reunion/reunion.module';
+import { RapportModule } from './rapport/rapport.module';
 
 @Module({
   imports: [
@@ -26,6 +29,9 @@ import { UserModule } from './user/user.module';
       isGlobal: true,
     }),
     UserModule,
+    CelluleModule,
+    ReunionModule,
+    RapportModule,
   ],
   controllers: [AppController],
   providers: [AppService],
