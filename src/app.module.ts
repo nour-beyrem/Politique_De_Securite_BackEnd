@@ -13,6 +13,7 @@ import { ReunionModule } from './reunion/reunion.module';
 import { RapportModule } from './rapport/rapport.module';
 import { InformationModule } from './information/information.module';
 import { IncidentModule } from './incident/incident.module';
+import { PerimetreModule } from './perimetre/perimetre.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { IncidentModule } from './incident/incident.module';
     RapportModule,
     InformationModule,
     IncidentModule,
+    PerimetreModule,
   ],
   controllers: [AppController],
   providers: [AppService],

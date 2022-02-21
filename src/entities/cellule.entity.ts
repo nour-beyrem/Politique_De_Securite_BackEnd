@@ -1,5 +1,7 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { ReunionEntity } from './reunion.entity';
 import { TimestampEntity } from './timestamp.entity';
 import { UserEntity } from './user.entity';
 
@@ -16,4 +18,9 @@ export class CelluleEntity extends TimestampEntity {
 
   @Column({ type: 'varchar' })
   membre2: string;
+
+  @OneToMany((type) => ReunionEntity, (reunion) => reunion.cellule, {
+    cascade: true,
+  })
+  reunionC: ReunionEntity[];
 }

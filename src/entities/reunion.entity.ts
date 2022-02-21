@@ -1,4 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { CelluleEntity } from './cellule.entity';
 import { TimestampEntity } from './timestamp.entity';
 
 @Entity('reunion')
@@ -20,4 +23,10 @@ export class ReunionEntity extends TimestampEntity {
 
   @Column({})
   Date: Date;
+
+  @ManyToOne((type) => CelluleEntity, (cellule) => cellule.reunionC, {
+    nullable: true,
+    eager: true,
+  })
+  cellule: CelluleEntity;
 }

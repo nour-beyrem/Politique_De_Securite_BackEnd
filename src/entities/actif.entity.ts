@@ -1,15 +1,17 @@
-import { Column, Entity, JoinTable, ManyToMany, PrimaryColumn } from 'typeorm';
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
 import { TimestampEntity } from './timestamp.entity';
 import { UserEntity } from './user.entity';
 
 @Entity('actif')
 export class ActifEntity extends TimestampEntity {
-  @PrimaryColumn({
-    length: 50,
-    unique: true,
+  @PrimaryGeneratedColumn({
   })
-  reference: string;
+  id: string;
 
+  @Column({ type: 'varchar' })
+  reference: string;
   @Column({ type: 'varchar' })
   nom: string;
 
@@ -40,7 +42,9 @@ export class ActifEntity extends TimestampEntity {
   @Column({})
   criticiteCID: number;
 
-  @ManyToMany(() => UserEntity)
-  @JoinTable()
-  proprietaire: UserEntity[];
+  @ManyToOne((type) => UserEntity, (user) => user.actif, {
+    nullable: true,
+    eager: true,
+  })
+  proprietaire: UserEntity;
 }

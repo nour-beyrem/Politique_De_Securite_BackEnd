@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { UserRoleEnum } from 'src/user/enum/user-role.enum';
 import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import { ActifEntity } from './actif.entity';
 import { DemandeAutorisationEntity } from './demande-autorisation.entity';
 import { PerimetreEntity } from './perimetre.entity';
 import { SortieActifEntity } from './sortie-actif.entity';
@@ -90,4 +91,10 @@ export class UserEntity extends TimestampEntity {
     cascade: true,
   })
   responsableAutorisation: SortieActifEntity[];
+
+
+  @OneToMany((type) => ActifEntity, (actif) => actif.proprietaire, {
+    cascade: true,
+  })
+  actif: ActifEntity[];
 }
