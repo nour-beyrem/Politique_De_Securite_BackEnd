@@ -11,6 +11,7 @@ import { UserModule } from './user/user.module';
 import { CelluleModule } from './cellule/cellule.module';
 import { ReunionModule } from './reunion/reunion.module';
 import { RapportModule } from './rapport/rapport.module';
+import { InformationModule } from './information/information.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { RapportModule } from './rapport/rapport.module';
     CelluleModule,
     ReunionModule,
     RapportModule,
+    InformationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
