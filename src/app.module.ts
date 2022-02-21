@@ -14,6 +14,7 @@ import { RapportModule } from './rapport/rapport.module';
 import { InformationModule } from './information/information.module';
 import { IncidentModule } from './incident/incident.module';
 import { PerimetreModule } from './perimetre/perimetre.module';
+import { ActifModule } from './actif/actif.module';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { PerimetreModule } from './perimetre/perimetre.module';
     InformationModule,
     IncidentModule,
     PerimetreModule,
+    ActifModule,
   ],
   controllers: [AppController],
   providers: [AppService],
