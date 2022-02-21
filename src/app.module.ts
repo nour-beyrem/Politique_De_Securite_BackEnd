@@ -12,6 +12,7 @@ import { CelluleModule } from './cellule/cellule.module';
 import { ReunionModule } from './reunion/reunion.module';
 import { RapportModule } from './rapport/rapport.module';
 import { InformationModule } from './information/information.module';
+import { IncidentModule } from './incident/incident.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { InformationModule } from './information/information.module';
     ReunionModule,
     RapportModule,
     InformationModule,
+    IncidentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
