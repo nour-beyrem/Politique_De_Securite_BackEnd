@@ -68,6 +68,14 @@ export class UserController {
        }
 
 
+       @Get('sortie/:sortie')
+       @UseGuards(JwtAuthGuard)
+       getUserBySortie(
+            @Param('sortie') sortie: boolean , @User() user
+           ): Promise<UserEntity[]> {
+            return this.userService.getUserbysortie(sortie,user);
+          }
+
     @Delete(':username')
     @UseGuards(JwtAuthGuard)
     deleteUser(

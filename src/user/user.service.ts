@@ -124,7 +124,13 @@ export class UserService {
    
         
          
+       async getUserbysortie(sortie,user): Promise<UserEntity[]>
+       {
+         if (user.role === UserRoleEnum.ResponsableSecurite )
+           return await this.userRepository.find({sortie})
+         throw new UnauthorizedException();
          
+      } 
          
    
          

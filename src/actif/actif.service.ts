@@ -26,6 +26,14 @@ export class ActifService {
           
        }
 
+       async getActifbyuser(proprietaire,user): Promise<ActifEntity[]>
+       {
+         if (user.role === UserRoleEnum.ResponsableSecurite )
+           return await this.actifRepository.find({proprietaire})
+         throw new UnauthorizedException();
+         
+      }
+
 
        async getById(id:string,user): Promise<ActifEntity>
        {

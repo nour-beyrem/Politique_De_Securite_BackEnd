@@ -25,7 +25,13 @@ export class ActifController {
 
  
 
-
+    @Get('proprietaire/:proprietaire')
+    @UseGuards(JwtAuthGuard)
+    getActifByUser(
+         @Param('proprietaire') proprietaire: string , @User() user
+        ): Promise<ActifEntity[]> {
+         return this.actifService.getActifbyuser(proprietaire,user);
+       }
 
     @Get(':id')
     @UseGuards(JwtAuthGuard)
