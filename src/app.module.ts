@@ -15,6 +15,12 @@ import { InformationModule } from './information/information.module';
 import { IncidentModule } from './incident/incident.module';
 import { PerimetreModule } from './perimetre/perimetre.module';
 import { ActifModule } from './actif/actif.module';
+import { ExterneModule } from './externe/externe.module';
+import { AutorisationModule } from './autorisation/autorisation.module';
+import { DocumentModule } from './document/document.module';
+import { MatriceModule } from './matrice/matrice.module';
+import { ProgrammeModule } from './programme/programme.module';
+import { SortieModule } from './sortie/sortie.module';
 
 @Module({
   imports: [
@@ -40,6 +46,12 @@ import { ActifModule } from './actif/actif.module';
     IncidentModule,
     PerimetreModule,
     ActifModule,
+    ExterneModule,
+    AutorisationModule,
+    DocumentModule,
+    MatriceModule,
+    ProgrammeModule,
+    SortieModule,
   ],
   controllers: [AppController],
   providers: [AppService],
