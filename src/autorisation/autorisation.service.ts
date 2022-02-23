@@ -28,7 +28,7 @@ export class AutorisationService {
 
        async getAutorisationbyuser(user,user1): Promise<DemandeAutorisationEntity[]>
        {
-         if (user1.role === UserRoleEnum.ResponsableSecurite )
+         if (user1.role === UserRoleEnum.ResponsableSecurite || user1.username=== user )
            return await this.autorisationRepository.find({user})
          throw new UnauthorizedException();
          
