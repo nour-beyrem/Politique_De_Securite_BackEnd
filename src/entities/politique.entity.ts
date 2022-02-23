@@ -1,3 +1,7 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { DocumentRoleEnum } from 'src/user/enum/document-role.enum';
+
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { TimestampEntity } from './timestamp.entity';
 
@@ -15,6 +19,9 @@ export class PolitiqueEntity extends TimestampEntity {
   @Column({ type: 'varchar' })
   commentaire: string;
 
-  @Column({ type: 'varchar' })
-  qui: string;
+ 
+
+  @Column({type: 'enum',
+        enum: DocumentRoleEnum})
+       qui: string;
 }
