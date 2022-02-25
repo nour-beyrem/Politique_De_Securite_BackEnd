@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Column,
   Entity,
@@ -37,7 +39,8 @@ export class ProgrammeSensibilisationEntity extends TimestampEntity {
   @Column({ type: 'varchar' })
   presence: string;
 
-  @ManyToMany(() => UserEntity)
-  @JoinTable()
-  publicConcerne: UserEntity[];
+  @Column({ type: 'varchar' })
+  publicConcerne: string;
+
+  
 }
