@@ -9,15 +9,25 @@ import { UserEntity } from './user.entity';
 export class CelluleEntity extends TimestampEntity {
   @PrimaryGeneratedColumn()
   id: string;
+  @ManyToOne((type) => UserEntity, (user) => user.presidentC, {
+    nullable: true,
+    eager: true,
+  })
+  president: UserEntity;
 
-  @Column({ type: 'varchar' })
-  president: string;
+  @ManyToOne((type) => UserEntity, (user) => user.membre1C, {
+    nullable: true,
+    eager: true,
+  })
+  membre1: UserEntity;
 
-  @Column({ type: 'varchar' })
-  membre1: string;
+  @ManyToOne((type) => UserEntity, (user) => user.membre2C, {
+    nullable: true,
+    eager: true,
+  })
+  membre2: UserEntity;
 
-  @Column({ type: 'varchar' })
-  membre2: string;
+ 
 
   @OneToMany((type) => ReunionEntity, (reunion) => reunion.cellule, {
     cascade: true,

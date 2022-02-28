@@ -3,6 +3,7 @@
 import { UserRoleEnum } from 'src/user/enum/user-role.enum';
 import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 import { ActifEntity } from './actif.entity';
+import { CelluleEntity } from './cellule.entity';
 import { DemandeAutorisationEntity } from './demande-autorisation.entity';
 import { PerimetreEntity } from './perimetre.entity';
 import { SortieActifEntity } from './sortie-actif.entity';
@@ -97,4 +98,19 @@ export class UserEntity extends TimestampEntity {
     cascade: true,
   })
   actif: ActifEntity[];
+
+  @OneToMany((type) => CelluleEntity, (cellule) => cellule.president, {
+    cascade: true,
+  })
+  presidentC: CelluleEntity[];
+
+  @OneToMany((type) => CelluleEntity, (cellule) => cellule.membre1, {
+    cascade: true,
+  })
+  membre1C: CelluleEntity[];
+
+  @OneToMany((type) => CelluleEntity, (cellule) => cellule.membre2, {
+    cascade: true,
+  })
+  membre2C: CelluleEntity[];
 }
