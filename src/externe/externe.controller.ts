@@ -48,6 +48,14 @@ export class ExterneController {
       return this.externeService.addExterne(externeData);
     }
 
+    @Get('type/:type')
+    @UseGuards(JwtAuthGuard)
+    getExterneByType(
+         @Param('type') type: string , @User() user
+        ): Promise<ExterneEntity[]> {
+         return this.externeService.getByType(type,user);
+       }
+
 
     @Put(':id')
     @UseGuards(JwtAuthGuard)

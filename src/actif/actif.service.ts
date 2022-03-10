@@ -33,7 +33,13 @@ export class ActifService {
          throw new UnauthorizedException();
          
       }
-
+      async getActifbyRef(reference,user): Promise<ActifEntity[]>
+      {
+        if (user.role === UserRoleEnum.ResponsableSecurite )
+          return await this.actifRepository.find({reference})
+        throw new UnauthorizedException();
+        
+     }
 
        async getById(id:string,user): Promise<ActifEntity>
        {

@@ -39,6 +39,15 @@ export class ExterneService {
            throw new UnauthorizedException();
        }
        
+       async getByType(type:string,user): Promise<ExterneEntity[]>
+       {
+            
+        if (user.role === UserRoleEnum.ResponsableSecurite )
+           return await this.externeRepository.find({type});
+   
+        else 
+           throw new UnauthorizedException();
+       }
       
           
        async addExterne( externeData: AddExterneDto): Promise<ExterneEntity> {

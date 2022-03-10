@@ -33,6 +33,14 @@ export class ActifController {
          return this.actifService.getActifbyuser(proprietaire,user);
        }
 
+       @Get('reference/:reference')
+       @UseGuards(JwtAuthGuard)
+       getActifByRef(
+            @Param('reference') reference: string , @User() user
+           ): Promise<ActifEntity[]> {
+            return this.actifService.getActifbyuser(reference,user);
+          }
+
     @Get(':id')
     @UseGuards(JwtAuthGuard)
     async getActifById(

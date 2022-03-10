@@ -50,7 +50,7 @@ export class AutorisationService {
           
        async addAutorisation( autorisationData: AddAutorisationDto, user): Promise<DemandeAutorisationEntity> {
          
-        if (user.role === UserRoleEnum.ResponsableSecurite  )
+        if (user.role === UserRoleEnum.ResponsableSecurite ||user.role === UserRoleEnum.AGENT )
           return await this.autorisationRepository.save(autorisationData);
         throw new UnauthorizedException();
         

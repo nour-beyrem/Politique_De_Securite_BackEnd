@@ -1,4 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { ExterneRoleEnum } from 'src/user/enum/externe-role.enum';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { SortieActifEntity } from './sortie-actif.entity';
 import { TimestampEntity } from './timestamp.entity';
 
 @Entity('externe')
@@ -12,7 +16,8 @@ export class ExterneEntity extends TimestampEntity {
   @Column({ type: 'varchar' })
   prenom: string;
 
-  @Column({ type: 'varchar' })
+  @Column({type: 'enum',
+  enum: ExterneRoleEnum})
   type: string;
 
   @Column({ type: 'varchar' })
@@ -50,4 +55,11 @@ export class ExterneEntity extends TimestampEntity {
 
   @Column({ type: 'varchar' })
   deQuoi: string;
+  @Column()
+  charte: boolean;
+
+  @OneToMany((type) => SortieActifEntity, (sortie) => sortie.responsable, {
+    cascade: true,
+  })
+  responsableAutorisation: SortieActifEntity[];
 }

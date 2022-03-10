@@ -46,6 +46,14 @@ export class DocumentController {
          return this.documentService.getPolitiquebyqui(qui);
        }
 
+
+       @Get('type/:typeChapitre')
+       getPolitiqueByTpe(
+            @Param('typeChapitre') typeChapitre: string 
+           ): Promise<PolitiqueEntity> {
+            return this.documentService.getPolitiquebyType(typeChapitre);
+          }
+
     @Post()
     @UseGuards(JwtAuthGuard)
     addPolitique(

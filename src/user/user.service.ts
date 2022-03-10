@@ -44,7 +44,7 @@ export class UserService {
              throw new NotFoundException(`user d'id ${username} n'existe pas`);
            }
            
-         if (user.role === UserRoleEnum.AGENT || personnel.username === user.username)
+         if (user.role === UserRoleEnum.ResponsableSecurite || personnel.username === user.username)
             return personnel;
    
          else 

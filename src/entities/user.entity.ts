@@ -88,10 +88,7 @@ export class UserEntity extends TimestampEntity {
   })
   agentAutorise: SortieActifEntity[];
 
-  @OneToMany((type) => SortieActifEntity, (sortie) => sortie.responsable, {
-    cascade: true,
-  })
-  responsableAutorisation: SortieActifEntity[];
+
 
 
   @OneToMany((type) => ActifEntity, (actif) => actif.proprietaire, {

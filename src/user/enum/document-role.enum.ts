@@ -5,7 +5,7 @@ export enum DocumentRoleEnum {
     AGENT= 'agent',
     STAGIARE= 'stagiare',
     PARTENAIRE ='partenaire',
-    EMPLOYE ='employe'
+    
     
     
   }

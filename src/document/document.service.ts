@@ -34,6 +34,13 @@ export class DocumentService {
          
       }
 
+      async getPolitiquebyType(typeChapitre): Promise<PolitiqueEntity>
+      {
+       
+          return await this.politiqueRepository.findOne({typeChapitre})
+       
+        
+     }
 
        async getById(id:string,user): Promise<PolitiqueEntity>
        {

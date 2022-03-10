@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { TimestampEntity } from './timestamp.entity';
 
@@ -6,8 +8,8 @@ export class InformationEntity extends TimestampEntity {
   @PrimaryGeneratedColumn()
   id: string;
 
-  @Column({ type: 'varchar' })
-  type: string;
+  @Column({})
+  reference: number;
 
   @Column({})
   criticiteCID: number;
@@ -15,8 +17,6 @@ export class InformationEntity extends TimestampEntity {
   @Column({})
   criticiteBUSINESS: number;
 
-  @Column({ type: 'varchar' })
-  ou: string;
 
   @Column({ type: 'varchar' })
   marquage: string;

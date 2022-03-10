@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
+import { SortieActifEntity } from './sortie-actif.entity';
 import { TimestampEntity } from './timestamp.entity';
 import { UserEntity } from './user.entity';
 
@@ -47,4 +48,10 @@ export class ActifEntity extends TimestampEntity {
     eager: true,
   })
   proprietaire: UserEntity;
+
+  @ManyToOne((type) => SortieActifEntity, (actif) => actif.actifS, {
+    cascade: true,
+    
+  })
+  sortie: SortieActifEntity[];
 }

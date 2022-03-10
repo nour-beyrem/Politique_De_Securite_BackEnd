@@ -9,6 +9,10 @@ import { UserEntity } from './user.entity';
 export class CelluleEntity extends TimestampEntity {
   @PrimaryGeneratedColumn()
   id: string;
+
+  @Column({})
+  reference: number;
+
   @ManyToOne((type) => UserEntity, (user) => user.presidentC, {
     nullable: true,
     eager: true,

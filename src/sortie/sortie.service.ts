@@ -51,7 +51,7 @@ export class SortieService {
           
        async addSortieActif( sortieData: AddSortieDto, user): Promise<SortieActifEntity> {
          
-        if (user.role === UserRoleEnum.ResponsableSecurite  )
+        if (user.role === UserRoleEnum.ResponsableSecurite  ||user.role === UserRoleEnum.AGENT)
           return await this.sortieRepository.save(sortieData);
         throw new UnauthorizedException();
         
@@ -75,7 +75,7 @@ export class SortieService {
         if (!sortie) {
            throw new NotFoundException(`Sortie Actif d'id ${ref} n'existe pas`);
         }
-        if (user.role === UserRoleEnum.ResponsableSecurite )    
+        if (user.role === UserRoleEnum.ResponsableSecurite || user.username=== sortie.agentS.username)    
           return await this.sortieRepository.save(updatedSortieActif);
              
            
