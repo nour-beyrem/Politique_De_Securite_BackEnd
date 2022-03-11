@@ -26,9 +26,9 @@ export class RapportService {
        }
 
 
-       async getById(id:string,user): Promise<RapportEntity>
+       async getById(id:string,user): Promise<RapportEntity[]>
        {
-         const rapport =  await this.rapportRepository.findOne(id);
+         const rapport =  await this.rapportRepository.find({id});
          if (!rapport)
            throw new NotFoundException(`Rapport d'id ${id} n'existe pas`);
          if (user.role === UserRoleEnum.ResponsableSecurite )

@@ -31,7 +31,7 @@ export class ExterneController {
     @UseGuards(JwtAuthGuard)
     async getExterneById(
       @Param('id') id: string, @User() user
-    ): Promise<ExterneEntity>{
+    ): Promise<ExterneEntity[]>{
       const externe = await this.externeService.getById(id,user);
 
       if (externe)

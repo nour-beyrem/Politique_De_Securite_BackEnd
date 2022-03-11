@@ -45,7 +45,7 @@ export class ActifController {
     @UseGuards(JwtAuthGuard)
     async getActifById(
       @Param('id') id: string, @User() user
-    ): Promise<ActifEntity>{
+    ): Promise<ActifEntity[]>{
       const actif = await this.actifService.getById(id,user);
 
       if (actif)

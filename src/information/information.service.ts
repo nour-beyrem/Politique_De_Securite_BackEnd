@@ -27,9 +27,9 @@ export class InformationService {
        }
 
 
-       async getById(id:string,user): Promise<InformationEntity>
+       async getById(id:string,user): Promise<InformationEntity[]>
        {
-         const information =  await this.informationRepository.findOne(id);
+         const information =  await this.informationRepository.find({id});
          if (!information)
            throw new NotFoundException(`Information d'id ${id} n'existe pas`);
          if (user.role === UserRoleEnum.ResponsableSecurite )

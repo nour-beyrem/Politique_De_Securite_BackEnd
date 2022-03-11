@@ -28,9 +28,9 @@ export class ReunionService {
        }
 
 
-       async getById(id:string,user): Promise<ReunionEntity>
+       async getById(id:string,user): Promise<ReunionEntity[]>
        {
-         const reunion =  await this.reunionRepository.findOne(id);
+         const reunion =  await this.reunionRepository.find({id});
          if (!reunion)
            throw new NotFoundException(`Reunion d'id ${id} n'existe pas`);
          if (user.role === UserRoleEnum.ResponsableSecurite )

@@ -20,7 +20,7 @@ export class ActifService {
        
        getActif(user): Promise<ActifEntity[]>
         {
-          if (user.role === UserRoleEnum.ResponsableSecurite  )
+          if (user.role === UserRoleEnum.ResponsableSecurite || user.role === UserRoleEnum.AGENT)
             return this.actifRepository.find();
           throw new UnauthorizedException();
           
@@ -41,9 +41,9 @@ export class ActifService {
         
      }
 
-       async getById(id:string,user): Promise<ActifEntity>
+       async getById(id:string,user): Promise<ActifEntity[]>
        {
-         const actif =  await this.actifRepository.findOne(id);
+         const actif =  await this.actifRepository.find({id});
          if (!actif)
            throw new NotFoundException(`Actif d'id ${id} n'existe pas`);
          if (user.role === UserRoleEnum.ResponsableSecurite )

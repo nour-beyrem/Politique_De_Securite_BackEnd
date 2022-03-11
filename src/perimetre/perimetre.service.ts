@@ -26,9 +26,9 @@ export class PerimetreService {
        }
 
 
-       async getById(id:string,user): Promise<PerimetreEntity>
+       async getById(id:string,user): Promise<PerimetreEntity[]>
        {
-         const perimetre =  await this.perimetreRepository.findOne(id);
+         const perimetre =  await this.perimetreRepository.find({id});
          if (!perimetre)
            throw new NotFoundException(`Perimetre d'id ${id} n'existe pas`);
          if (user.role === UserRoleEnum.ResponsableSecurite )

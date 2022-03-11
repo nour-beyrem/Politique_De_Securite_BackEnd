@@ -28,9 +28,9 @@ export class ProgrammeService {
 
       
 
-       async getById(id:string,user): Promise<ProgrammeSensibilisationEntity>
+       async getById(id:string,user): Promise<ProgrammeSensibilisationEntity[]>
        {
-         const programme =  await this.programmeRepository.findOne(id);
+         const programme =  await this.programmeRepository.find({id});
          if (!programme)
            throw new NotFoundException(`Programme de sensibilisation d'id ${id} n'existe pas`);
          if (user.role === UserRoleEnum.ResponsableSecurite )

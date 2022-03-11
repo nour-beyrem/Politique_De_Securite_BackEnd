@@ -33,7 +33,7 @@ export class ProgrammeController {
     @UseGuards(JwtAuthGuard)
     async getProgrammeSensibilisationById(
       @Param('id') id: string, @User() user
-    ): Promise<ProgrammeSensibilisationEntity>{
+    ): Promise<ProgrammeSensibilisationEntity[]>{
       const programme = await this.programmeService.getById(id,user);
 
       if (programme)

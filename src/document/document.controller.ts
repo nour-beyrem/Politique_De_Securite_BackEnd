@@ -32,7 +32,7 @@ export class DocumentController {
     @UseGuards(JwtAuthGuard)
     async getPolitiqueById(
       @Param('id') id: string, @User() user
-    ): Promise<PolitiqueEntity>{
+    ): Promise<PolitiqueEntity[]>{
       const politique = await this.documentService.getById(id,user);
 
       if (politique)

@@ -31,7 +31,7 @@ export class RapportController {
     @UseGuards(JwtAuthGuard)
     async getRapportById(
       @Param('id') id: string, @User() user
-    ): Promise<RapportEntity>{
+    ): Promise<RapportEntity[]>{
       const rapport = await this.rapportService.getById(id,user);
 
       if (rapport)

@@ -31,7 +31,7 @@ export class IncidentController {
     @UseGuards(JwtAuthGuard)
     async getIncidentById(
       @Param('id') id: string, @User() user
-    ): Promise<IncidentEntity>{
+    ): Promise<IncidentEntity[]>{
       const incident = await this.incidentService.getById(id,user);
 
       if (incident)

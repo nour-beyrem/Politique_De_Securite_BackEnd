@@ -34,9 +34,9 @@ export class UserService {
        }
    
    
-       async getById(username:string, user): Promise<UserEntity>
+       async getById(username:string, user): Promise<UserEntity[]>
        {
-         const personnel =  await this.userRepository.findOne(username);
+         const personnel =  await this.userRepository.find({username});
          
    
          if (!personnel)
@@ -44,7 +44,7 @@ export class UserService {
              throw new NotFoundException(`user d'id ${username} n'existe pas`);
            }
            
-         if (user.role === UserRoleEnum.ResponsableSecurite || personnel.username === user.username)
+         if (user.role === UserRoleEnum.ResponsableSecurite || personnel[0].username === user.username)
             return personnel;
    
          else 

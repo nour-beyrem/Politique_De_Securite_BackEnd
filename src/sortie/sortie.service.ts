@@ -36,9 +36,9 @@ export class SortieService {
       }
 
 
-       async getById(ref:string,user): Promise<SortieActifEntity>
+       async getById(ref:string,user): Promise<SortieActifEntity[]>
        {
-         const sortie =  await this.sortieRepository.findOne(ref);
+         const sortie =  await this.sortieRepository.find({ref});
          if (!sortie)
            throw new NotFoundException(`Sortie Actif d'id ${ref} n'existe pas`);
          if (user.role === UserRoleEnum.ResponsableSecurite )

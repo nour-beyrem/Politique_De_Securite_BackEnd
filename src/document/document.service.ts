@@ -42,9 +42,9 @@ export class DocumentService {
         
      }
 
-       async getById(id:string,user): Promise<PolitiqueEntity>
+       async getById(id:string,user): Promise<PolitiqueEntity[]>
        {
-         const politique =  await this.politiqueRepository.findOne(id);
+         const politique =  await this.politiqueRepository.find({id});
          if (!politique)
            throw new NotFoundException(`Politique d'id ${id} n'existe pas`);
          if (user.role === UserRoleEnum.ResponsableSecurite )

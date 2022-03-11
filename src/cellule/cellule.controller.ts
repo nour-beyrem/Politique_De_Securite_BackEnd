@@ -31,7 +31,7 @@ export class CelluleController {
     @UseGuards(JwtAuthGuard)
     async getCelluleById(
       @Param('id') id: string, @User() user
-    ): Promise<CelluleEntity>{
+    ): Promise<CelluleEntity[]>{
       const cellule = await this.celluleService.getById(id,user);
 
       if (cellule)

@@ -34,10 +34,18 @@ export class AutorisationService {
          
       }
 
+      async getAutorisationbyResponsable(responsable,user1): Promise<DemandeAutorisationEntity[]>
+      {
+        if (user1.role === UserRoleEnum.ResponsableSecurite || user1.username=== responsable )
+          return await this.autorisationRepository.find({responsable})
+        throw new UnauthorizedException();
+        
+     }
 
-       async getById(id:string,user): Promise<DemandeAutorisationEntity>
+
+       async getById(id:string,user): Promise<DemandeAutorisationEntity[]>
        {
-         const autorisation =  await this.autorisationRepository.findOne(id);
+         const autorisation =  await this.autorisationRepository.find({id});
          if (!autorisation)
            throw new NotFoundException(`Autorisation d'id ${id} n'existe pas`);
          if (user.role === UserRoleEnum.ResponsableSecurite )

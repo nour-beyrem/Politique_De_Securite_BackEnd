@@ -27,9 +27,9 @@ export class IncidentService {
        }
 
 
-       async getById(id:string,user): Promise<IncidentEntity>
+       async getById(id:string,user): Promise<IncidentEntity[]>
        {
-         const incident =  await this.incidentRepository.findOne(id);
+         const incident =  await this.incidentRepository.find({id});
          if (!incident)
            throw new NotFoundException(`Incident d'id ${id} n'existe pas`);
          if (user.role === UserRoleEnum.ResponsableSecurite )

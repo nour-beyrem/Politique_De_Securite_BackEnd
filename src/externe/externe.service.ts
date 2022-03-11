@@ -28,13 +28,14 @@ export class ExterneService {
        
 
 
-       async getById(id:string,user): Promise<ExterneEntity>
+       async getById(id:string,user): Promise<ExterneEntity[]>
        {
-         const externe =  await this.externeRepository.findOne(id);
+         const externe =  await this.externeRepository.find({id});
          if (!externe)
            throw new NotFoundException(`Externe d'id ${id} n'existe pas`);
          if (user.role === UserRoleEnum.ResponsableSecurite )
-            return externe;
+           return externe;
+          
          else
            throw new UnauthorizedException();
        }

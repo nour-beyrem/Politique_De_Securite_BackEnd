@@ -31,7 +31,7 @@ export class PerimetreController {
     @UseGuards(JwtAuthGuard)
     async getPerimetreById(
       @Param('id') id: string, @User() user
-    ): Promise<PerimetreEntity>{
+    ): Promise<PerimetreEntity[]>{
       const perimetre = await this.perimetreService.getById(id,user);
 
       if (perimetre)

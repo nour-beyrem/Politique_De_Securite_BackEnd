@@ -31,7 +31,7 @@ export class MatriceController {
     @UseGuards(JwtAuthGuard)
     async getMatriceById(
       @Param('id') id: string, @User() user
-    ): Promise<MatriceFluxEntity>{
+    ): Promise<MatriceFluxEntity[]>{
       const matrice = await this.matriceService.getById(id,user);
 
       if (matrice)
@@ -39,7 +39,15 @@ export class MatriceController {
     }
 
     
+    @Get('ref/:ref')
+    @UseGuards(JwtAuthGuard)
+    getMatriceByRef(
+         @Param('ref') ref: string , @User() user
+        ): Promise<MatriceFluxEntity[]> {
+         return this.matriceService.getByRef(ref,user);
+       }
 
+       
     @Post()
     @UseGuards(JwtAuthGuard)
     addMatrice(

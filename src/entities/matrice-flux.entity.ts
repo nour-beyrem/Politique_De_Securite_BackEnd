@@ -6,6 +6,9 @@ export class MatriceFluxEntity extends TimestampEntity {
   id: string;
 
   @Column({ type: 'varchar' })
+  ref: string;
+
+  @Column({ type: 'varchar' })
   nom: string;
 
   @Column({ type: 'varchar' })
@@ -13,7 +16,7 @@ export class MatriceFluxEntity extends TimestampEntity {
   @Column({ type: 'varchar' })
   CloudServeur: string;
   @Column({ type: 'varchar' })
-  ServeursSiège: string;
+  ServeursSiege: string;
   @Column({ type: 'varchar' })
   FireWall: string;
   @Column({ type: 'varchar' })

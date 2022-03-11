@@ -26,12 +26,20 @@ export class MatriceService {
           
        }
 
+
+       async getByRef(ref:string,user): Promise<MatriceFluxEntity[]>
+       {
+         if (user.role === UserRoleEnum.ResponsableSecurite  )
+           return await this.matriceRepository.find({ref});
+         throw new UnauthorizedException();
+         
+      }
    
 
 
-       async getById(id:string,user): Promise<MatriceFluxEntity>
+       async getById(id:string,user): Promise<MatriceFluxEntity[]>
        {
-         const matrice =  await this.matriceRepository.findOne(id);
+         const matrice =  await this.matriceRepository.find({id});
          if (!matrice)
            throw new NotFoundException(`matrice d'id ${id} n'existe pas`);
          if (user.role === UserRoleEnum.ResponsableSecurite )

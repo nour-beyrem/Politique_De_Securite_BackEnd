@@ -31,7 +31,7 @@ export class SortieController {
     @UseGuards(JwtAuthGuard)
     async getSortieById(
       @Param('ref') id: string, @User() user
-    ): Promise<SortieActifEntity>{
+    ): Promise<SortieActifEntity[]>{
       const sortie = await this.sortieService.getById(id,user);
 
       if (sortie)

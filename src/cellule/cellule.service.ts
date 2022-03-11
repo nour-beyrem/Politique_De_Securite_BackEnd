@@ -27,9 +27,9 @@ export class CelluleService {
        }
 
 
-       async getById(id:string,user): Promise<CelluleEntity>
+       async getById(id:string,user): Promise<CelluleEntity[]>
        {
-         const cellule =  await this.celluleRepository.findOne(id);
+         const cellule =  await this.celluleRepository.find({id});
          if (!cellule)
            throw new NotFoundException(`cellule d'id ${id} n'existe pas`);
          if (user.role === UserRoleEnum.ResponsableSecurite )

@@ -31,7 +31,7 @@ export class AutorisationController {
     @UseGuards(JwtAuthGuard)
     async getAutorisationById(
       @Param('id') id: string, @User() user
-    ): Promise<DemandeAutorisationEntity>{
+    ): Promise<DemandeAutorisationEntity[]>{
       const autorisation = await this.autorisationService.getById(id,user);
 
       if (autorisation)
@@ -45,6 +45,15 @@ export class AutorisationController {
         ): Promise<DemandeAutorisationEntity[]> {
          return this.autorisationService.getAutorisationbyuser(user,user1);
        }
+
+
+       @Get('responsable/:responsable')
+       @UseGuards(JwtAuthGuard)
+       getAutorisationByResponsable(
+            @Param('responsable') responsable: string , @User() user1
+           ): Promise<DemandeAutorisationEntity[]> {
+            return this.autorisationService.getAutorisationbyResponsable(responsable,user1);
+          }
 
     @Post()
     @UseGuards(JwtAuthGuard)

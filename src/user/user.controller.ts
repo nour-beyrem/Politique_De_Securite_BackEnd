@@ -29,7 +29,7 @@ export class UserController {
     @UseGuards(JwtAuthGuard)
     async getUserById(
       @Param('username') username: string, @User() user
-    ): Promise<UserEntity>{
+    ): Promise<UserEntity[]>{
       const user1 = await this.userService.getById(username,user);
       if (user1)
     

@@ -30,7 +30,7 @@ export class ReunionController {
     @UseGuards(JwtAuthGuard)
     async getReunionById(
       @Param('id') id: string, @User() user
-    ): Promise<ReunionEntity>{
+    ): Promise<ReunionEntity[]>{
       const reunion = await this.reunionService.getById(id,user);
 
       if (reunion)

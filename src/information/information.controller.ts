@@ -31,7 +31,7 @@ export class InformationController {
     @UseGuards(JwtAuthGuard)
     async getInformationById(
       @Param('id') id: string, @User() user
-    ): Promise<InformationEntity>{
+    ): Promise<InformationEntity[]>{
       const information = await this.informationService.getById(id,user);
 
       if (information)
