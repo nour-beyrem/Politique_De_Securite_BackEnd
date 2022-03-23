@@ -25,7 +25,14 @@ export class CelluleController {
 
  
 
-
+    @Get('ref/:reference')
+    @UseGuards(JwtAuthGuard)
+    getCelluleByRef(
+         @Param('reference') reference: string , @User() user1
+        ): Promise<CelluleEntity[]> {
+         return this.celluleService.getCelluleByRef(reference,user1);
+       }
+       
 
     @Get(':id')
     @UseGuards(JwtAuthGuard)

@@ -18,10 +18,10 @@ export class AutorisationService {
       )
        {}
        
-       getAutorisation(user): Promise<DemandeAutorisationEntity[]>
+     async  getAutorisation(user): Promise<DemandeAutorisationEntity[]>
         {
           if (user.role === UserRoleEnum.ResponsableSecurite  )
-            return this.autorisationRepository.find();
+            return await this.autorisationRepository.find();
           throw new UnauthorizedException();
           
        }

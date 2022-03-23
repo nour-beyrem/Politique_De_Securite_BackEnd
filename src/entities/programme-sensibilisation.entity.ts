@@ -39,8 +39,10 @@ export class ProgrammeSensibilisationEntity extends TimestampEntity {
   @Column({ type: 'varchar' })
   presence: string;
 
-  @Column({ type: 'varchar' })
+  @Column()
   publicConcerne: string;
+
+ 
 
   
 }

@@ -11,7 +11,7 @@ export class CelluleEntity extends TimestampEntity {
   id: string;
 
   @Column({})
-  reference: number;
+  reference: string;
 
   @ManyToOne((type) => UserEntity, (user) => user.presidentC, {
     nullable: true,

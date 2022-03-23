@@ -20,13 +20,13 @@ export class DemandeAutorisationEntity extends TimestampEntity {
   DateOK: Date;
 
   @Column({})
-  Definitive: Date;
+  Definitive: string;
 
   @Column({})
-  temporaireDe: Date;
+  temporaireDe: string;
 
   @Column({})
-  temporaireAu: Date;
+  temporaireAu: string;
 
   @Column()
   signature: boolean;

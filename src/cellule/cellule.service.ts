@@ -38,6 +38,13 @@ export class CelluleService {
            throw new UnauthorizedException();
        }
        
+       async getCelluleByRef(reference:string,user1): Promise<CelluleEntity[]>
+       {
+         if (user1.role === UserRoleEnum.ResponsableSecurite )
+           return await this.celluleRepository.find({reference})
+         throw new UnauthorizedException();
+         
+      }
       
           
        async addCellule( celluleData: AddCelluleDto, user): Promise<CelluleEntity> {
