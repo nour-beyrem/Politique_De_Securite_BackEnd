@@ -81,7 +81,7 @@ export class UserService {
      
        async addUser(userData: AddUserDto, user1) : Promise<Partial<UserEntity>>{
    
-        if (user1.role === UserRoleEnum.ResponsableSecurite ) {
+      //  if (user1.role === UserRoleEnum.ResponsableSecurite ) {
            const user = this.userRepository.create({
              ...userData
            });
@@ -97,10 +97,10 @@ export class UserService {
              email: user.email,
              role: user.role
            };
-         }
+     //    }
    
-        else 
-         throw new UnauthorizedException();
+        //else 
+        // throw new UnauthorizedException();
          
          
          

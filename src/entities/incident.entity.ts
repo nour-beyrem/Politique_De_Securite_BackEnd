@@ -1,13 +1,14 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { TimestampEntity } from './timestamp.entity';
-
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 @Entity('incident')
 export class IncidentEntity extends TimestampEntity {
   @PrimaryGeneratedColumn()
   id: string;
 
-  @Column({})
-  Date: Date;
+  @Column({ type: 'varchar' })
+  Date:string;
 
   @Column({ type: 'varchar' })
   nomIncident: string;

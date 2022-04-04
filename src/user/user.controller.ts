@@ -60,7 +60,7 @@ export class UserController {
       
 
        @Post()
-       @UseGuards(JwtAuthGuard)
+      // @UseGuards(JwtAuthGuard)
        addUser(
          @Body() userData:AddUserDto , @User() user1
        ){

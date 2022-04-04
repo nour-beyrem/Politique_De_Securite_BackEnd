@@ -16,6 +16,9 @@ export class PerimetreEntity extends TimestampEntity {
   @Column({ type: 'varchar' })
   mesureSecurite: string;
 
+  @Column({ type: 'varchar' })
+  site: string;
+
   @Column({})
   criticiteCID: number;
 
