@@ -38,6 +38,8 @@ export class UserEntity extends TimestampEntity {
 
   @Column()
   sortie: boolean;
+  @Column()
+  dateSortie: Date;
 
   @Column({type: 'enum',
         enum: UserRoleEnum})
